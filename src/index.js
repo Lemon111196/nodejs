@@ -5,6 +5,8 @@ const handlebars = require('express-handlebars');
 const morgan = require('morgan');
 const path = require('path');
 
+app.use(express.static(path.join(__dirname, 'public')));
+
 app.use(morgan('combined'));
 
 // Template engine
