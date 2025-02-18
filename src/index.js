@@ -9,6 +9,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(morgan('combined'));
 
+app.use(express.urlencoded({
+  extended: true
+}));
+
+app.use(express.json());
+
 // Template engine
 app.engine('hbs', handlebars.engine({
   extname: '.hbs'
@@ -27,6 +33,11 @@ app.get('/news', (req, res) => {
 app.get('/search', (req, res) => {
   console.log(req.query.q);
   res.render('search')
+})
+
+app.post('/search', (req, res) => {
+  console.log(req.body);
+  res.send('')
 })
 
 app.listen(port, () => {
